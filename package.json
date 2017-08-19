@@ -5,7 +5,7 @@
     "url": "https://github.com/jaid",
     "email": "dev@j4id.com"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "postcss-value-replace",
   "description": "PostCSS plugin that replaces any value specified in options",
   "repository": {
