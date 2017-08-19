@@ -16,7 +16,7 @@ module.exports = plugin("postcss-value-replace", options => {
             return
         }
 
-        debug(`Parsing ${options.functionName}() for keys ${Object.keys(options.replace)}`)
+        debug(`Parsing ${options.functionName}() for keys ${Object.keys(options.replace)} in ${css.source.input.file}`)
 
         css.walkDecls(node => {
             if (!node.value || !node.value.includes(options.functionName)) { // Search for function name for better performance
