@@ -4,7 +4,7 @@ import isEmpty from "lodash.isempty"
 
 const debug = require("debug")("postcss-value-replace")
 
-export default plugin("postcss-value-replace", options => {
+module.exports = plugin("postcss-value-replace", options => {
 
     options = options || {}
     options.functionName = options.functionName || "replace"
