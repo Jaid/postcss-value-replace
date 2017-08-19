@@ -41,3 +41,9 @@ a {
 
  - `functionName = "replace"` Name of the CSS function postcss-value-replace looks for
  - `replace = {}` Object where keys are the first argument of the CSS replace() function and values the corresponding replacement value
+
+Add key-value-pairs to `replace` to make this plugin replace values in your CSS.
+
+## Plugin order
+
+This should be the first plugin in your plugins array.
