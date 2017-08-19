@@ -7,7 +7,7 @@
 Input
 ```css
 a {
-    color: replace(link);
+    color: replace(linkColor);
     background: rgba(replace("red"), replace("green"), replace("blue"), replace(alpha));
     margin: replace("margin");
     font-weight: replace(font-weight);
@@ -17,7 +17,7 @@ Options
 ```js
 postcss([require("postcss-value-replace")({
     replace: {
-         link: "#00CC00",
+         linkColor: "#00CC00",
          red: 200,
          green: 60,
          blue: 80,

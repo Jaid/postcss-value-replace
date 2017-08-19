@@ -44,7 +44,9 @@ function parseValue(value, options) {
         }
         if (!options.replace.hasOwnProperty(key)) {
             debug(`"${key}" not found in options.replace`)
+            return
         }
+        debug(`${node.value}(${key}) → ${options.replace[key]}`)
         node.type = "word"
         node.value = options.replace[key]
     }).toString()

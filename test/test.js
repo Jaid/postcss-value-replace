@@ -1,5 +1,5 @@
 export default {
-    link: "#00CC00",
+    linkColor: "#00CC00",
     red: 200,
     green: 60,
     blue: 80,
