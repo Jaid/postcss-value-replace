@@ -16,7 +16,7 @@ export default plugin("postcss-value-replace", options => {
             return
         }
 
-        debug(`Loaded replacements for keys ${Object.keys(options.replace)}`)
+        debug(`Parsing ${options.functionName}() for keys ${Object.keys(options.replace)}`)
 
         css.walkDecls(node => {
             if (!node.value || !node.value.includes(options.functionName)) { // Search for function name for better performance
