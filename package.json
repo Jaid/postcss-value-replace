@@ -20,21 +20,21 @@
     "index.js"
   ],
   "dependencies": {
-    "debug": "^3.0.0",
+    "debug": "^4.1.1",
     "lodash.isempty": "^4.4.0",
-    "postcss": "^6.0.9",
+    "postcss": "^7.0.11",
     "postcss-value-parser": "^3.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-minify": "^0.2.0",
+    "babel-preset-minify": "^0.5.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^7.0.0",
-    "np": "^2.16.0"
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "np": "^3.1.0"
   },
   "scripts": {
     "prepublishOnly": "yarn run build-prod",
