@@ -1,5 +1,7 @@
 # postcss-value-replace
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Jaid/postcss-value-replace.svg)](https://greenkeeper.io/)
+
 [PostCSS](https://github.com/postcss/postcss) plugin that replaces values specified in options. This is an easy way to create flexible themes.
 
 ## Example
