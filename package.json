@@ -23,7 +23,7 @@
     "debug": "^3.0.0",
     "lodash.isempty": "^4.4.0",
     "postcss": "^6.0.9",
-    "postcss-value-parser": "^3.3.0"
+    "postcss-value-parser": "^3.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
