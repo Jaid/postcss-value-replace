@@ -20,7 +20,7 @@
     "index.js"
   ],
   "dependencies": {
-    "debug": "^3.0.0",
+    "debug": "^3.2.6",
     "lodash.isempty": "^4.4.0",
     "postcss": "^6.0.9",
     "postcss-value-parser": "^3.3.0"
