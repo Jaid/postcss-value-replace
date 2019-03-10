@@ -1,0 +1,44 @@
+language: node_js
+node_js: [node, lts/*]
+cache:
+  npm: true
+before_script:
+  - npm add --global pover
+script:
+  - pover install
+  - pover build:dev
+  - pover build:prod
+  - pover test
+jobs:
+  include:
+    - stage: Deploy
+      before_deploy:
+        - npm run build:prod
+        - export PKG_NAME=$(node -e "console.log(require('./dist/package/production/package').name)")
+        - export PKG_VERSION=$(node -e "console.log(require('./dist/package/production/package').version)")
+        - "[[ -d dist/homepage/$PKG_NAME/$PKG_VERSION ]] && npm run test:coverage && cp -r dist/homepage/$PKG_NAME/$PKG_VERSION page && cp -r dist/jest/coverage/lcov-report page/coverage || true"
+        - cd dist/package/production
+        - zip -9 --recurse-paths ../../${PKG_NAME}_v$PKG_VERSION.zip **
+        - zip -9 --recurse-paths ../../${PKG_NAME}_v${PKG_VERSION}_min.zip ** --exclude \*.d.ts --exclude readme.* --exclude \*.map
+        - cd ../../..
+      deploy:
+        - provider: pages
+          local_dir: page
+          fqdn: $PKG_NAME.jaid.codes
+          skip_cleanup: true
+          github_token: $GITHUB_TOKEN # Permissions: public_repo, repo:status, repo_deployment
+          on: { condition: -d pages }
+        - provider: releases
+          file_glob: true
+          file:
+            - license.*
+            - dist/package/production/package.json
+            - dist/package/production/*.d.ts
+            - "dist/*.zip"
+          skip_cleanup: true
+          api_key: $GITHUB_TOKEN # Permissions: public_repo, repo:status, repo_deployment
+          on: { tags: true }
+        - provider: script
+          script: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc && npm publish dist/package/production
+          skip_cleanup: true
+          on: { tags: true }

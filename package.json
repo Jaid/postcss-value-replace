@@ -1,60 +1,39 @@
 {
-  "license": "MIT",
-  "author": {
-    "name": "Jaid",
-    "url": "https://github.com/jaid",
-    "email": "jaid.jsx@gmail.com"
-  },
-  "version": "0.1.4",
-  "name": "postcss-value-replace",
-  "description": "PostCSS plugin that replaces any value specified in options",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jaid/postcss-value-replace"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "main": "index.js",
-  "files": [
-    "index.js"
-  ],
+  "private": true,
+  "version": "1.2.1",
+  "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
   "dependencies": {
-    "debug": "^3.0.0",
-    "lodash.isempty": "^4.4.0",
-    "postcss": "^6.0.9",
-    "postcss-value-parser": "^3.3.0"
+    "@absolunet/fss": "^1.6.0",
+    "@babel/runtime": "^7.3.4",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.11",
+    "postcss": "^7.0.14",
+    "postcss-value-parser": "^3.3.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-minify": "^0.2.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^7.0.0",
-    "np": "^2.16.0"
+    "ajv": "^6.10.0",
+    "babel-jest": "^24.3.1",
+    "babel-plugin-pkg": "^1.0.1",
+    "babel-preset-jaid": "^5.5.0",
+    "caniuse-lite": "^1.0.30000943",
+    "eslint": "^5.15.1",
+    "eslint-config-jaid": "^1.12.0",
+    "jest": "^24.3.1",
+    "opn-cli": "^4.0.0",
+    "rimraf": "^2.6.3",
+    "webpack-config-jaid": "^3.3.0"
   },
   "scripts": {
-    "prepublishOnly": "yarn run build-prod",
-    "build": "node_modules/.bin/babel index.jsx --out-file index.js",
-    "build-prod": "NODE_ENV=production node_modules/.bin/babel index.jsx --out-file index.js",
-    "run": "yarn run build-prod && DEBUG=postcss-value-replace node_modules/.bin/gulp run",
-    "bump-and-publish": "node -r chalk -e 'const chalk = require(\"chalk\");console.log(`${chalk.red(\"Run\")} ${chalk.yellow(\"node_modules/.bin/np\")} ${chalk.red(\"in console. See https://github.com/sindresorhus/np/issues/143\")}`)'"
-  },
-  "bugs": {
-    "url": "https://github.com/jaid/postcss-value-replace/issues"
-  },
-  "homepage": "https://github.com/jaid/postcss-value-replace#readme",
-  "keywords": [
-    "css",
-    "postcss",
-    "postcss-plugin",
-    "skin",
-    "theme",
-    "function",
-    "replace",
-    "value-replace"
-  ]
+    "clean": "rimraf dist/ test/**/dist/",
+    "babel:prod": "rimraf dist/src-transpiled/production && NODE_ENV=production babel --out-dir dist/src-transpiled/production --source-maps true src",
+    "babel:dev": "rimraf dist/src-transpiled/development && babel --out-dir dist/src-transpiled/development src",
+    "babel:test": "rimraf dist/src-transpiled/test && NODE_ENV=test babel --out-dir dist/src-transpiled/test src",
+    "build:prod": "NODE_ENV=production webpack",
+    "build:dev": "webpack",
+    "test": "npm run build:prod && NODE_ENV=production MAIN=dist/package/production jest --runInBand",
+    "test:coverage": "npm run test:dev -- --coverage --json --outputFile=dist/jest/stats.json",
+    "test:dev": "NODE_ENV=test jest --runInBand",
+    "test:debug": "DEBUG=\"$(basename $PWD),$(basename $PWD):*\" NODE_ENV=test node --inspect=9229 node_modules/jest/bin/jest.js --runInBand",
+    "release": "npm run clean && npm test && git tag v$npm_package_version && git push --tags && opn https://github.com/$npm_package_author_name/$(basename $PWD)/releases/new?tag=v$npm_package_version"
+  }
 }

@@ -1,10 +1,10 @@
 import {plugin} from "postcss"
 import valueParser from "postcss-value-parser"
-import isEmpty from "lodash.isempty"
+import {isEmpty} from "lodash"
 
-const debug = require("debug")("postcss-value-replace")
+const debug = require("debug")(_PKG_NAME)
 
-module.exports = plugin("postcss-value-replace", options => {
+export default plugin(_PKG_NAME, options => {
 
     options = options || {}
     options.functionName = options.functionName || "replace"

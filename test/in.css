@@ -1,0 +1,6 @@
+a {
+  color: replace(linkColor);
+  background: rgba(replace("red"), replace("green"), replace("blue"), replace(alpha));
+  margin: replace("margin");
+  font-weight: replace(font-weight);
+}

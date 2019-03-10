@@ -1,18 +1,30 @@
-# IDE data
-/.idea/
+# dotenv
+.env
 
-# Allowed IDE data
-!/.idea/encodings.xml
+# Node packages
+node_modules
 
-# NodeJS/npm
-/node_modules/
-/package-lock.json
+# npm
+package-lock.json
+!/package-lock.json
+npm-debug.log
+npm-debug.log.*
+.npmrc
+
+# pnpm
+shrinkwrap.yaml
+!/shrinkwrap.yaml
+pnpm-debug.log
 
 # Yarn
-/yarn-error.log
+yarn.lock
+!/yarn.lock
+yarn-error.log
 
-# Compiled with Babel
-/index.js
+# Generated or temporary content
+dist
+temp
 
-# Compiled with PostCSS
-/test/compiled/
+# IDEs
+/.vscode/
+/.idea/
