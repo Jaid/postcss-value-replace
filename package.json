@@ -6,7 +6,7 @@
     "@absolunet/fss": "^1.6.0",
     "@babel/runtime": "^7.3.4",
     "debug": "^4.1.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "postcss": "^7.0.14",
     "postcss-value-parser": "^3.3.1"
   },
